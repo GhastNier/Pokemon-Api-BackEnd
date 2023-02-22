@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MongoConfiguration">
+    <option name="shellPath" value="C:\ProgramData\chocolatey\lib\mongodb-shell\tools\mongosh-1.7.1-win32-x64\bin\mongosh.exe" />
+  </component>
+</project>
