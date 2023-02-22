@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon-Api-BackEnd", "Pokemon-Api-BackEnd\Pokemon-Api-BackEnd.csproj", "{36191E86-4AE5-466E-8AB1-49A1D8BFCF34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd", "BackEnd\BackEnd.csproj", "{36191E86-4AE5-466E-8AB1-49A1D8BFCF34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

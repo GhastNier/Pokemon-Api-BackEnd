@@ -1,0 +1,6 @@
+[submodule "api-data-all"]
+	path = api-data-all
+	url = https://github.com/PokeAPI/api-data
+[submodule "FrontEndApi"]
+	path = FrontEndApi
+	url = https://github.com/GhastNier/mick-beslogic-app
