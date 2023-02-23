@@ -18,6 +18,22 @@ public class PkmnForms
         public Pokemons? Pokemon { get; set; }
         public PkmnFormType[] Types { get; set; }
         public PkmnFormSprites[] Sprites { get; set; }
-        [BsonElement("version_group")] private VersionGroup VersionGroup { get; set; }
+        [BsonElement("version_group")] public VersionGroup VersionGroup { get; set; }
+        public Name[] Names { get; set; }
+        [BsonElement("form_names")] public Name[] FormNames { get; set; }
     }
+}
+
+public class PkmnFormSprites
+{
+    [BsonElement("front_default")] public string? FrontDefault { get; set; }
+    [BsonElement("front_shiny")] public string? FrontShiny { get; set; }
+    [BsonElement("Back_default")] public string? BackDefault { get; set; }
+    [BsonElement("BackShiny")] public string? BackShiny { get; set; }
+}
+
+public class PkmnFormType
+{
+    public int Slot { get; set; }
+    public PokemonMain.Type Type { get; set; }
 }

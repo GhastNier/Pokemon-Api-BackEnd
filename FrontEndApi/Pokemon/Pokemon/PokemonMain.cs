@@ -38,11 +38,36 @@ public class Pokemons
     public int NatDex { get; set; }
 }
 
-
-
 public class PkmnAbility
 {
     [BsonElement("is_hidden")] public bool IsHidden { get; set; }
     public int Slot { get; set; }
     public Abilities.Ability Ability { get; set; }
+}
+
+public class Name
+{
+    [BsonElement("name")] public string? BasicName { get; set; }
+    public Language Language { get; set; }
+}
+
+public class Language
+{
+    public ObjectId Id { get; set; }
+    public string? Name { get; set; }
+    public bool Official { get; set; }
+    public string? Iso639 { get; set; }
+    public string? Iso3166 { get; set; }
+    public Name[]? Names { get; set; }
+}
+
+public class VersionGroup
+{
+    public ObjectId Id { get; set; }
+    public string? Name { get; set; }
+    public int Order { get; set; }
+    public Generation Generation { get; set; }
+    [BsonElement("move_learn_methods")] public MoveLearnMtd[] MoveLearnMethods { get; set; }
+    public Pokedex[] Pokedexes { get; set; }
+    
 }
