@@ -17,22 +17,22 @@ public class PokemonMain
 public class Pokemons
 {
     public ObjectId Id { get; set; }
-    public PkmnAbility[]? Abilities { get; set; }
+    public List<PkmnAbility>? Abilities { get; set; }
     public int BaseExperience { get; set; }
-    public PkmnForm[]? Forms { get; set; }
-    public VersionGameIndex[] GameIndices { get; set; }
+    public List<PkmnForm>? Forms { get; set; }
+    public List<VersionGameIndex>? GameIndices { get; set; }
     public int Height { get; set; }
-    public PkmnHeldItems[] HeldItems { get; set; }
+    public List<PkmnHeldItems>? HeldItems { get; set; }
     public bool IsDefault { get; set; }
     public string LocationAreaEncounters { get; set; }
-    public PkmnMoves[] Moves { get; set; }
+    public List<PkmnMoves>? Moves { get; set; }
     public string Name { get; set; }
     public int Order { get; set; }
-    [BsonElement("past_types")] public PastType[] PastTypes { get; set; }
+    [BsonElement("past_types")] public List<PastType>? PastTypes { get; set; }
     public PkmnSpecies Species { get; set; }
     public PkmnSprites Sprites { get; set; }
-    public PkmnStats[] Stats { get; set; }
-    public PkmnType[] Types { get; set; }
+    public List<PkmnStats>? Stats { get; set; }
+    public List<PkmnType>? Types { get; set; }
     public int Weight { get; set; }
     public bool Favorite { get; set; }
     public int NatDex { get; set; }
@@ -58,7 +58,7 @@ public class Language
     public bool Official { get; set; }
     public string? Iso639 { get; set; }
     public string? Iso3166 { get; set; }
-    public Name[]? Names { get; set; }
+    public List<Name>? Names { get; set; }
 }
 
 public class VersionGroup
@@ -67,7 +67,8 @@ public class VersionGroup
     public string? Name { get; set; }
     public int Order { get; set; }
     public Generation Generation { get; set; }
-    [BsonElement("move_learn_methods")] public MoveLearnMtd[] MoveLearnMethods { get; set; }
-    public Pokedex[] Pokedexes { get; set; }
-    
+    [BsonElement("move_learn_methods")] public List<MoveLearnMtd>? MoveLearnMethods { get; set; }
+    public List<Pokedex>? Pokedexes { get; set; }
+    public List<Region>? Regions { get; set; }
+    public List<Version>? Versions { get; set; }
 }

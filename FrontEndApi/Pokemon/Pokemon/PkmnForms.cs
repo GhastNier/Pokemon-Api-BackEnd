@@ -15,12 +15,12 @@ public class PkmnForms
         [BsonElement("is_battle_only")] public bool BattleOnly { get; set; }
         [BsonElement("is_mega")] public bool Mega { get; set; }
         [BsonElement("form_name")] public string? FormName { get; set; }
-        public Pokemons? Pokemon { get; set; }
-        public PkmnFormType[] Types { get; set; }
-        public PkmnFormSprites[] Sprites { get; set; }
-        [BsonElement("version_group")] public VersionGroup VersionGroup { get; set; }
-        public Name[] Names { get; set; }
-        [BsonElement("form_names")] public Name[] FormNames { get; set; }
+        public List<Pokemons>? Pokemon { get; set; }
+        public List<PkmnFormType>? Types { get; set; }
+        public List<PkmnFormSprites>? Sprites { get; set; }
+        [BsonElement("version_group")] public VersionGroup? VersionGroup { get; set; }
+        public List<Name>? Names { get; set; }
+        [BsonElement("form_names")] public List<Name>? FormNames { get; set; }
     }
 }
 
@@ -35,5 +35,5 @@ public class PkmnFormSprites
 public class PkmnFormType
 {
     public int Slot { get; set; }
-    public PokemonMain.Type Type { get; set; }
+    public PkmnType Type { get; set; }
 }
