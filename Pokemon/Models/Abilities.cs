@@ -1,8 +1,9 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+
 // using Pokemon.Games;
 
-namespace Pokemon;
+namespace Pokemon.Models;
 
 public abstract class Ability
 {

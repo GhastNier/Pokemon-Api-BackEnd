@@ -7,3 +7,5 @@
 //         [BsonId] [BsonElement("_id")] public ObjectId Id { get; set; }   
 //     }
 // }
+
+namespace Pokemon.Models;

@@ -964,19 +964,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\michs\\.nuget\\packages\\": {}
+    "C:\\Users\\MichaelSavard\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\michs\\RiderProjects\\Pokemon\\Pokemon\\Pokemon.csproj",
+      "projectUniqueName": "C:\\Users\\MichaelSavard\\Desktop\\Repo\\C#\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
       "projectName": "Pokemon",
-      "projectPath": "C:\\Users\\michs\\RiderProjects\\Pokemon\\Pokemon\\Pokemon.csproj",
-      "packagesPath": "C:\\Users\\michs\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\michs\\RiderProjects\\Pokemon\\Pokemon\\obj\\",
+      "projectPath": "C:\\Users\\MichaelSavard\\Desktop\\Repo\\C#\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
+      "packagesPath": "C:\\Users\\MichaelSavard\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MichaelSavard\\Desktop\\Repo\\C#\\Pokemon-Api-BackEnd\\Pokemon\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\michs\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\MichaelSavard\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

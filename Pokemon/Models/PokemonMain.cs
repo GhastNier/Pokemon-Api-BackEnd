@@ -1,13 +1,14 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+
 // using Pokemon.Games;
 // using static Pokemon.Types;
 
-namespace Pokemon;
+namespace Pokemon.Models;
 
 public class PokemonMain
 {
-    [BsonId] [BsonElement("_id")] public ObjectId Id { get; set; }
+    [BsonId] [BsonRepresentation(BsonType.ObjectId)] public string? Id { get; set; }
     public int Height { get; set; }
     public int NatDex { get; set; }
     public string? Name { get; set; }

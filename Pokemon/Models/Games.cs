@@ -54,3 +54,5 @@
 //         [BsonElement("pokemon_species")] public List<PkmnSpecies>? PkmnSpeciesList { get; set; }
 //     }
 // }
+
+namespace Pokemon.Models;
