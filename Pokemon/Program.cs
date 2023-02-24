@@ -1,5 +1,4 @@
 using Pokemon.Models;
-using Pokemon.Models;
 using Pokemon.Services;
 
 var builder = WebApplication.CreateBuilder(args);

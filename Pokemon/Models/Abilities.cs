@@ -20,7 +20,7 @@ public abstract class Ability
     {
         public string? Effect { get; set; }
         [BsonElement("short_effect")] public string? ShortEffect { get; set; }
-        public Language Language { get; set; }
+        public Language? Language { get; set; }
     }
 
     public abstract class AbilityChange
@@ -31,13 +31,13 @@ public abstract class Ability
         public abstract class Effect
         {
             [BsonElement("effect")]public string? EffectText { get; set; }
-            public Language Language { get; set; }
+            public Language? Language { get; set; }
         }
     }
     public abstract class AbilityFlavorText
     {
         [BsonElement("flavor_text")]public string? FlavorText { get; set; }
-        public Language Language { get; set; }
+        public Language? Language { get; set; }
         // [BsonElement("version_group")]public VersionGroup VersionGroup { get; set; }
     }
 }
