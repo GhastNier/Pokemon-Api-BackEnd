@@ -969,11 +969,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MichaelSavard\\Desktop\\Repo\\C#\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
+      "projectUniqueName": "C:\\Users\\MichaelSavard\\RiderProjects\\API2\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
       "projectName": "Pokemon",
-      "projectPath": "C:\\Users\\MichaelSavard\\Desktop\\Repo\\C#\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
+      "projectPath": "C:\\Users\\MichaelSavard\\RiderProjects\\API2\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
       "packagesPath": "C:\\Users\\MichaelSavard\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MichaelSavard\\Desktop\\Repo\\C#\\Pokemon-Api-BackEnd\\Pokemon\\obj\\",
+      "outputPath": "C:\\Users\\MichaelSavard\\RiderProjects\\API2\\Pokemon-Api-BackEnd\\Pokemon\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MichaelSavard\\AppData\\Roaming\\NuGet\\NuGet.Config"

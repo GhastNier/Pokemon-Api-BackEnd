@@ -8,13 +8,15 @@ namespace Pokemon.Models;
 
 public class PokemonMain
 {
-    [BsonId] [BsonRepresentation(BsonType.ObjectId)] public string? Id { get; set; }
-    public int Height { get; set; }
-    public int NatDex { get; set; }
-    public string? Name { get; set; }
-    public int Weight { get; set; }
-    public bool Favorite { get; set; }
-    public string? Sprite { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string _Id { get; set; } = null!;
+    [BsonElement("name")] public string Name { get; set; } = null!;
+    [BsonElement("natDex")] public int NatDex { get; set; }
+    [BsonElement("height")] public int Height { get; set; }
+    [BsonElement("weight")] public int Weight { get; set; }
+    [BsonElement("sprite")] public string? Sprite { get; set; }
+    [BsonElement("favorite")] public bool Favorite { get; set; }
 }
 
 // public class Pokemons

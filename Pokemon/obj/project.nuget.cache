@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DsgidQSNHc946iyZGGCZMVF9rMo4ROTXSlBSCrfwwHpE6RZh9kSjw/jgZZTmq+s0Ehqhtw9ifwt3WFLqHAHzzg==",
+  "dgSpecHash": "ZF09+J976LCHxo9++4BtevDQ9dAfhjpDB2zQc/wNk5R25lRBMTuY+W4/wcCvXvWJHBP+p9lhZ7Q/w4h6a2b+gQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MichaelSavard\\Desktop\\Repo\\C#\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
+  "projectFilePath": "C:\\Users\\MichaelSavard\\RiderProjects\\API2\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MichaelSavard\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\MichaelSavard\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

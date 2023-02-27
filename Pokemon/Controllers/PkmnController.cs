@@ -1,14 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 using Pokemon.Models;
 using Pokemon.Services;
-
 
 namespace Pokemon.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("pkmn/[controller]")]
 public class PkmnController : ControllerBase
 {
     private readonly PkmnMainService _mainService;
@@ -16,20 +13,16 @@ public class PkmnController : ControllerBase
     public PkmnController(PkmnMainService mainService) =>
         _mainService = mainService;
 
-    [HttpGet(Name = "GetPokemon")]
-    public async Task<List<PokemonMain>> Get() =>
-        await _mainService.GetAsync();
-
-    [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<PokemonMain>> Get(int id)
+    [HttpGet("{natDex:int}")]
+    public async Task<IActionResult> Get(int natDex)
     {
-        var pkmn = await _mainService.GetAsync(id);
-        if (pkmn is null)
+        var pkmn = await _mainService.GetAsync(natDex);
+        if (pkmn == null)
         {
             return NotFound();
         }
 
-        return pkmn;
+        return Ok(pkmn);
     }
 
     [HttpPost]
@@ -39,17 +32,19 @@ public class PkmnController : ControllerBase
         return CreatedAtAction(nameof(Get), new { natDex = newPkmn.NatDex }, newPkmn);
     }
 
-    [HttpPut("{natDex:length(6)}")]
-    public async Task<ActionResult> Update(int natDex, PokemonMain updatePkm)
+    [HttpPut("{natDex:int}/update/favorite")]
+    public async Task<ActionResult> UpdateFavAsync(int natDex)
     {
-        var pkmn = await _mainService.GetAsync(natDex);
-        if (pkmn is null)
-        {
-            return NotFound();
-        }
-
-        updatePkm.Favorite = !pkmn.Favorite;
-        await _mainService.UpdateAsync(natDex, pkmn);
+        //updatePkm.Favorite = !pkmn.Favorite;
+        await _mainService.UpdateFavAsync(natDex);
         return NoContent();
+    }
+
+    // GET: api/pkmn/{natDex}/favorite
+    [HttpGet("{natDex}/favorite")]
+    public async Task<ActionResult> GetFavorite(int natDex)
+    {
+        var pkmnMain = await _mainService.GetFavorite(natDex);
+        return Ok(pkmnMain.Favorite);
     }
 }
