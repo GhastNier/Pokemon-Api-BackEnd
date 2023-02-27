@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ZF09+J976LCHxo9++4BtevDQ9dAfhjpDB2zQc/wNk5R25lRBMTuY+W4/wcCvXvWJHBP+p9lhZ7Q/w4h6a2b+gQ==",
+  "dgSpecHash": "igusPt60BmdNYcU/1tRGLZrFpGTkyNOEb7FO1wHIOEgIEeVZrjoXsOJA/XwdqJynaDAA7L+gR0NVmb/bWMHA5A==",
   "success": true,
   "projectFilePath": "C:\\Users\\MichaelSavard\\RiderProjects\\API2\\Pokemon-Api-BackEnd\\Pokemon\\Pokemon.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MichaelSavard\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\MichaelSavard\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\MichaelSavard\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\MichaelSavard\\.nuget\\packages\\dotenv.net\\3.1.2\\dotenv.net.3.1.2.nupkg.sha512",
     "C:\\Users\\MichaelSavard\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\MichaelSavard\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\MichaelSavard\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
