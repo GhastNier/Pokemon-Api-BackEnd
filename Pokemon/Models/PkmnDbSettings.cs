@@ -1,6 +1,6 @@
 ﻿namespace Pokemon.Models;
 
-public class PokemonDatabaseSettings
+public class PkmnDbSettings
 {
     public string ConnectionString { get; set; } = null!;
     public string DatabaseName { get; set; } = null!;
