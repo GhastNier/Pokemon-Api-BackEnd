@@ -1,22 +1,24 @@
-
 <mat-progress-spinner *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
 <div *ngIf="!isLoading">
-  <div class="mat-h1 subtitle">Pokémon <i>super cool</i> du moment!</div>
-  <ul class="pokemon-card-container" #scrollContainer>
-    <li *ngFor="let pokemon of pkmnMain">
-      <mat-card (click)="updateFavorite(pokemon.natDex)" [id]="'card_'+pokemon.natDex" class="pokemon-card">
-        <mat-card-header>
-          <mat-card-title #listItem>{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}</mat-card-title>
-        </mat-card-header>
-        <img class="corner" [src]="pokemon.favorite?fav:notFav" alt="Pokéball"/>
-        <img [src]="pokemon.sprite"
-             [alt]="pokemon.name" class="pokemon-image">
-        <mat-card-content>
-          <p><strong>Height:</strong> {{ pokemon.height / 10 }} m</p>
-          <p><strong>Weight:</strong> {{ pokemon.weight / 100 }} kg</p>
-        </mat-card-content>
-        <mat-card-footer/>
-      </mat-card>
-    </li>
-  </ul>
+  <div class="pokemon-list-container">
+    <h2 class="subtitle sticky">Pokémon <i>super cool</i> du moment!</h2>
+    <ul class="pokemon-card-container" #scrollContainer>
+      <li *ngFor="let pokemon of pkmnMain">
+        <mat-card (click)="updateFavorite(pokemon.natDex)" [id]="'card_'+pokemon.natDex" class="pokemon-card">
+          <mat-card-header>
+            <mat-card-title
+              #listItem>{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}</mat-card-title>
+          </mat-card-header>
+          <img class="corner" [src]="pokemon.favorite?fav:notFav" alt="Pokéball"/>
+          <img [src]="pokemon.sprite"
+               [alt]="pokemon.name" class="pokemon-image">
+          <mat-card-content>
+            <p><strong>Height:</strong> {{ pokemon.height / 10 }} m</p>
+            <p><strong>Weight:</strong> {{ pokemon.weight / 100 }} kg</p>
+          </mat-card-content>
+          <mat-card-footer/>
+        </mat-card>
+      </li>
+    </ul>
+  </div>
 </div>

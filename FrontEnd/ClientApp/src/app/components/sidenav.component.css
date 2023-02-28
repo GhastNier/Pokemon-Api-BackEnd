@@ -8,19 +8,24 @@
   height: 100%;
 }
 .mat-toolbar.index{
-
   z-index: 5;
+}
+a.items{
+  font-size: 1.35vh;
 }
 mat-toolbar.toolbar-red  {
   position: sticky;
   font-weight: bolder;
+  font-size: 1.75vh;
   background-color: red;
   top:50px;
   padding-top: 75px;
   z-index: 6;
   width: 150px;
 }
-mat-nav-list {
+mat-nav-list, mat-nav-list:hover, mat-nav-list:active, mat-nav-list:focus,math-nav-list.href {
+  color: #FFFFFF;
+  position:sticky;
   padding-left: 15px;
   padding-top: 70px;
   width: 150px;
