@@ -1,30 +1,32 @@
 using BackEnd.Models;
 using BackEnd.Services;
 using dotenv.net;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Load environment variables from a .env file.
 DotEnv.Load();
-builder.Services.Configure<PkmnDbSettings>(
-    builder.Configuration.GetSection("PokemonMainDatabase")
-);
+
+// Add services to the container.
+builder.Services.Configure<PkmnDbSettings>(builder.Configuration.GetSection("PokemonMainDatabase"));
 builder.Services.AddSingleton<PkmnMainService>();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var MyAllowedOrigins = "_myAllowedOrigins";
+
+// Set up CORS policy to allow requests from localhost.
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(MyAllowedOrigins,
-        builder =>
-        {
-            builder.WithOrigins("http://localhost:4200","http://localhost:7027")
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        });
+    options.AddPolicy("LocalhostPolicy", originCors =>
+    {
+        originCors.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
-var config = new ConfigurationBuilder().AddEnvironmentVariables().Build();
+
+// Get configuration settings from environment variables.
+IConfigurationRoot config = new ConfigurationBuilder().AddEnvironmentVariables().Build();
 builder.Services.Configure<PkmnDbSettings>(settings =>
 {
     settings.ConnectionString = config["MONGODB_URI"];
@@ -33,7 +35,12 @@ builder.Services.Configure<PkmnDbSettings>(settings =>
     settings.VerboseCollection = config["VERBOSE_COLLECTION"];
     settings.AbilitiesCollection = config["ABILITIES_COLLECTION"];
 });
+
+
+
+// Build the application.
 var app = builder.Build();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -41,11 +48,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
+app.UseCors("LocalhostPolicy");
 app.UseHttpsRedirection();
-
+app.UseRouting();
 app.UseAuthorization();
-
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

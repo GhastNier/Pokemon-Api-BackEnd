@@ -26,22 +26,10 @@ public class PkmnController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetPokemonPageAsync(int page)
+    public async Task<OkObjectResult> GetPokemonPageAsync(int page)
     {
-        var (results, totalCount) = await _mainService.GetListByPagesAsync(page);
-        var count = results.Count;
-        var totalPages = (int)Math.Ceiling((double)totalCount / 5);
-
-        var response = new
-        {
-            Page = page,
-            TotalPages = totalPages,
-            TotalCount = totalCount,
-            Count = count,
-            Results = results
-        };
-
-        return Ok(response);
+        var results = await _mainService.GetListByPagesAsync(page);
+        return Ok(results);
     }
     // [HttpPost]
     // public async Task<ActionResult> Post(PokemonMain newPkmn)
@@ -53,16 +41,15 @@ public class PkmnController : ControllerBase
     [HttpPut("{natDex:int}/update/favorite")]
     public async Task<ActionResult> UpdateFavAsync(int natDex)
     {
-        //updatePkm.Favorite = !pkmn.Favorite;
-        await _mainService.UpdateFavAsync(natDex);
-        return NoContent();
+        var updatedPkmn = await _mainService.UpdateFavAsync(natDex);
+        return Ok(updatedPkmn);
     }
 
     // GET: api/pkmn/{natDex}/favorite
     [HttpGet("{natDex}/favorite")]
     public async Task<ActionResult> GetFavorite(int natDex)
     {
-        var pkmnMain = await _mainService.GetFavorite(natDex);
-        return Ok(pkmnMain.Favorite);
+        var pkmnMain = await _mainService.GetFavAsync(natDex);
+        return Ok(pkmnMain);
     }
 }

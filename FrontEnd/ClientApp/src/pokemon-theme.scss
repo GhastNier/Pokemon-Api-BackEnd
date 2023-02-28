@@ -1,0 +1,26 @@
+@import '~@angular/material/theming';
+@use '@angular/material' as mat;
+@include mat.core();
+
+// Pokemon color palette
+$red: #e91e63;
+$orange: #ff9800;
+$yellow: #fdd835;
+$green: #4caf50;
+$blue: #2196f3;
+$purple: #9c27b0;
+
+// Define theme colors
+$primary-color: mat-palette($red);
+$accent-color: mat-palette($yellow);
+
+// Define theme
+$pokemon-theme: mat-light-theme((
+  color: (
+    primary: $primary-color,
+    accent: $accent-color
+  )
+));
+
+// Include theme in app
+@include angular-material-theme($pokemon-theme);

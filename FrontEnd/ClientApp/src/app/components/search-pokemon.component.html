@@ -1,0 +1,8 @@
+<mat-form-field appearance="outline">
+  <mat-label>Search for a pokemon!</mat-label>
+  <input minlength="5" (keyup)="(searchPkmnName())" matInput
+         placeholder="Username" [(ngModel)]="formFieldValue" value="">
+  <mat-hint>5 Characters minimum</mat-hint>
+  <mat-error>
+  </mat-error>
+</mat-form-field>

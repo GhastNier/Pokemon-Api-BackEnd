@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Pokemon color palette
+$red: mat.define-palette(mat.$red-palette);
+$orange: mat.define-palette(mat.$orange-palette);
+$yellow: mat.define-palette(mat.$yellow-palette);
+$green: mat.define-palette(mat.$green-palette);
+$blue: mat.define-palette(mat.$blue-palette);
+$purple: mat.define-palette(mat.$purple-palette);
+
+// Define the theme colors using the Pokemon palette
+$primary-color: $red;
+$accent-color: $yellow;
+$warn-color: $purple;
+
+// Create the Pokemon theme object
+$pokemon-theme: mat.define-light-theme((
+  color: (
+    primary: $primary-color,
+    accent: $accent-color,
+    warn: $warn-color
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+@include mat.all-component-themes($pokemon-theme);
