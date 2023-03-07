@@ -8,57 +8,58 @@ namespace BackEnd.Services;
 
 public class PkmnMainService
 {
-    private readonly IMongoCollection<PokemonMain> _mainCollection;
-
+    private readonly IMongoCollection<PokemonBasics> _basicCollection;
+    private readonly IMongoCollection<EggGroup> _eggGroup;
     public PkmnMainService(IOptions<PkmnDbSettings> options)
     {
         var mongoClient = new MongoClient(options.Value.ConnectionString);
         if (mongoClient == null) throw new ArgumentNullException(nameof(mongoClient));
         var mongoDatabase = mongoClient.GetDatabase(options.Value.DatabaseName) ??
                             throw new ArgumentNullException(nameof(options));
-        _mainCollection = mongoDatabase.GetCollection<PokemonMain>(options.Value.MainCollection);
+        _basicCollection = mongoDatabase.GetCollection<PokemonBasics>(options.Value.PkmnBasics);
+        _eggGroup = mongoDatabase.GetCollection<EggGroup>(options.Value.EggGroup);
     }
 
 
-    public async Task<IMongoQueryable<PokemonMain>> GetAsync(int natDex)
+    public async Task<IMongoQueryable<PokemonBasics>> GetAsync(int natDex)
     {
-        var pkmn = _mainCollection.AsQueryable()
+        var pkmn = _basicCollection.AsQueryable()
             .Where(p => p.NatDex == natDex)
             .Select(p => p);
         await Task.CompletedTask;
         return pkmn;
     }
 
-    // public async Task CreateAsync(PokemonMain newPkmn) =>
-    //     await _mainCollection.InsertOneAsync(newPkmn);
+    // public async Task CreateAsync(PokemonBasics newPkmn) =>
+    //     await _basicsCollections.InsertOneAsync(newPkmn);
 
-    public async Task<PokemonMain?> UpdateFavAsync(int natDex)
+    public async Task<PokemonBasics?> UpdateFavAsync(int natDex)
     {
-        var pokemon = await _mainCollection.AsQueryable()
+        var pokemon = await _basicCollection.AsQueryable()
             .Where(p => p.NatDex == natDex)
             .FirstOrDefaultAsync();
 
         if (pokemon == null) return pokemon;
         {
             pokemon.Favorite = !pokemon.Favorite;
-            await _mainCollection.ReplaceOneAsync(p => p.NatDex == pokemon.NatDex, pokemon);
+            await _basicCollection.ReplaceOneAsync(p => p.NatDex == pokemon.NatDex, pokemon);
             return pokemon;
         }
     }
     
     public async Task<IMongoQueryable<bool>> GetFavAsync(int natDex)
     {
-        var pkmn = _mainCollection.AsQueryable()
+        var pkmn = _basicCollection.AsQueryable()
             .Where(p => p.NatDex == natDex)
             .Select(p => p.Favorite);
         return pkmn;
     }
 
-    public async Task<List<PokemonMain>> GetListByPagesAsync(int page)
+    public async Task<List<PokemonBasics>> GetListByPagesAsync(int page)
     {
-        var pkmn = _mainCollection.AsQueryable();
+        var pkmn = _basicCollection.AsQueryable();
         // Get the documents for the specified page
-        List<PokemonMain> results;
+        List<PokemonBasics> results;
         var totalPages = await GetTotalPages();
         if (page > totalPages) page = totalPages;
         if (page < 1)
@@ -76,9 +77,15 @@ public class PkmnMainService
         return (results);
     }
 
+    public async Task<EggGroup> GetEggGroupName(int id)
+    {
+        var pkmn = _eggGroup.AsQueryable();
+        var results = await pkmn.Where(p => p.Id == id).FirstOrDefaultAsync();
+        return (results);
+    }
     private async Task<int> GetTotalPages()
     {
-        var pkmn = _mainCollection.AsQueryable().CountAsync();
+        var pkmn = _basicCollection.AsQueryable().CountAsync();
         var totalCount = await pkmn;
         var totalPages = (int)Math.Ceiling(((double)totalCount - 30) / 5)+1;
         WriteLine(totalPages);

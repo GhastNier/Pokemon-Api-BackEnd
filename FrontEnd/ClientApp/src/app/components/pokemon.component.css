@@ -143,9 +143,10 @@ mat-card-content p {
   align-self: center;
   justify-self: center;
   position: absolute;
-  top: -10px;
-  right: -10px;
-  max-height: 42px;
+  top: 0.5vw;
+  right: 0.5vw;
+  height: 3vw;
+  max-height: 36px;
 }
 
 src .inactive{

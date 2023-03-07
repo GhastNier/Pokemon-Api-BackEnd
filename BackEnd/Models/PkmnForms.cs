@@ -18,7 +18,7 @@
 //         [BsonElement("form_name")] public string? FormName { get; set; }
 //         public List<Pokemons>? BackEnd { get; set; }
 //         public List<PkmnFormType>? Types { get; set; }
-//         public List<PkmnFormSprites>? Sprites { get; set; }
+//         public List<PkmnFormSprites>? PkmnSprite { get; set; }
 //         [BsonElement("version_group")] public VersionGroup? VersionGroup { get; set; }
 //         public List<Name>? Names { get; set; }
 //         [BsonElement("form_names")] public List<Name>? FormNames { get; set; }

@@ -27,13 +27,26 @@ builder.Services.AddCors(options =>
 
 // Get configuration settings from environment variables.
 IConfigurationRoot config = new ConfigurationBuilder().AddEnvironmentVariables().Build();
-builder.Services.Configure<PkmnDbSettings>(settings =>
+builder.Services.Configure<PkmnDbSettings>(pkmnSettings =>
 {
-    settings.ConnectionString = config["MONGODB_URI"];
-    settings.DatabaseName = config["DATABASE_NAME"];
-    settings.MainCollection = config["MAIN_COLLECTION"];
-    settings.VerboseCollection = config["VERBOSE_COLLECTION"];
-    settings.AbilitiesCollection = config["ABILITIES_COLLECTION"];
+    pkmnSettings.ConnectionString = config["MONGODB_URI"];
+    pkmnSettings.DatabaseName = config["PKMN_DB"];
+    pkmnSettings.Main = config["PKMN_COLLECTION"];
+    pkmnSettings.PkmnBasics = config["PKMN_BASICS"];
+    pkmnSettings.PkmnSprite = config["PKMN_SPRITES"];
+    pkmnSettings.Encounters = config["PKMN_ENCOUNTERS"];
+    pkmnSettings.Forms = config["PKMN_FORMS"];
+    pkmnSettings.Habitat = config["PKMN_HABITAT"];
+    pkmnSettings.Shape = config["PKMN_SHAPE"];
+    pkmnSettings.Species = config["PKMN_SPECIES"];
+    pkmnSettings.Pokedex = config["PKMN_POKEDEX"];
+    pkmnSettings.Pokeatlhon = config["PKMN_POKEATHLON"];
+    pkmnSettings.Stat = config["PKMN_STAT"];
+    pkmnSettings.Type = config["PKMN_TYPE"];
+    pkmnSettings.Nature = config["PKMN_NATURE"];
+    pkmnSettings.EvoChain = config["PKMN_CHAIN"];
+    pkmnSettings.EvoTrigger = config["PKMN_EVO_TRIGGER"];
+    pkmnSettings.EggGroup = config["PKMN_EGG_GROUP"];
 });
 
 

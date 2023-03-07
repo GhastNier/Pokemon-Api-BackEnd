@@ -32,7 +32,7 @@ public class PkmnController : ControllerBase
         return Ok(results);
     }
     // [HttpPost]
-    // public async Task<ActionResult> Post(PokemonMain newPkmn)
+    // public async Task<ActionResult> Post(PokemonBasics newPkmn)
     // {
     //     await _mainService.CreateAsync(newPkmn);
     //     return CreatedAtAction(nameof(Get), new { natDex = newPkmn.NatDex }, newPkmn);
@@ -46,10 +46,17 @@ public class PkmnController : ControllerBase
     }
 
     // GET: api/pkmn/{natDex}/favorite
-    [HttpGet("{natDex}/favorite")]
+    [HttpGet("{natDex:int}/favorite")]
     public async Task<ActionResult> GetFavorite(int natDex)
     {
         var pkmnMain = await _mainService.GetFavAsync(natDex);
         return Ok(pkmnMain);
+    }
+    //GET: api/pkmn/{eggGroupId}
+    [HttpGet("/eggGroup/{id:int}")]
+    public async Task<ActionResult> GetEggGroupById(int id)
+    {
+        var pkmnEggGroup = await _mainService.GetEggGroupName(id);
+        return Ok(pkmnEggGroup);
     }
 }
