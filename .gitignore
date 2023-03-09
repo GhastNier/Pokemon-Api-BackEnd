@@ -1,2 +1,12 @@
 ﻿/Pokemon/bin/
 /Pokemon/obj/
+/node_modules/
+/BackEnd/backup/
+/BackEnd/obj/
+/BackEnd/dump/
+/BackEnd/data/
+/BackEnd/bin/
+/BackEnd/bin/Debug/
+/BackEnd/bin/Debug/net6.0/
+/BackEnd/bin/Debug/net6.0/dump/
+/BackEnd/bin/Debug/net6.0/runtimes/
