@@ -5,8 +5,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Pokemon/BackEnd.csproj", "Pokemon/"]
-RUN dotnet restore "Pokemon/BackEnd.csproj"
+COPY ["BackEnd/BackEnd.csproj", "BackEnd/"]
+RUN dotnet restore "BackEnd/BackEnd.csproj"
 COPY . .
 WORKDIR "/src/Pokemon"
 RUN dotnet build "BackEnd.csproj" -c Release -o /app/build

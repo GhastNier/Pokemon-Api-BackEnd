@@ -4,19 +4,44 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="DockerComposer" Version="1.0.0.4" />
         <PackageReference Include="dotenv.net" Version="3.1.2" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0-preview.1.23110.8" />
         <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
     </ItemGroup>
 
+    <Target Name="DockerComposeUp" AfterTargets="Build">
+        <Exec Command="docker-compose -f docker-db.yml up -d" />
+    </Target>
+    
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+      <Content Remove="dump\**" />
+      <Content Remove="data\**" />
     </ItemGroup>
-
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Users\michs\RiderProjects\Pokemon\backup\admin\system.version.metadata.json" />
+      <_ContentIncludedByDefault Remove="ConfigHelper\ConfigHelper.cs.json" />
+      <_ContentIncludedByDefault Remove="dump\admin\system.version.metadata.json" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="dump\**" />
+      <Compile Remove="data\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="dump\**" />
+      <EmbeddedResource Remove="data\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="dump\**" />
+      <None Remove="data\**" />
+    </ItemGroup>
 </Project>

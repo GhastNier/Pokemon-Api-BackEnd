@@ -44,3 +44,16 @@ C:\Users\michs\RiderProjects\Pokemon\BackEnd\obj\Debug\net6.0\staticwebassets\ms
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.BackEnd.props
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.BackEnd.props
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\DockerComposer.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Ductus.FluentDocker.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\dump\admin\system.version.metadata.json
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll

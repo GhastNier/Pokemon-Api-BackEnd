@@ -1,62 +1,99 @@
-using BackEnd.Models;
 using BackEnd.Services;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using static BackEnd.Models.Pokemons;
 
 namespace BackEnd.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[SwaggerTag("Pokemon Data")]
 public class PkmnController : ControllerBase
 {
-    private readonly PkmnMainService _mainService;
+    private readonly PkmnService _service;
 
-    public PkmnController(PkmnMainService mainService) =>
-        _mainService = mainService;
+    public PkmnController(PkmnService service) =>
+        _service = service;
 
     [HttpGet("{natDex:int}")]
+    [Tags("Pokemon Basic Infos")]
     public async Task<IActionResult> Get(int natDex)
     {
-        var pkmn = await _mainService.GetAsync(natDex);
-        if (pkmn == null)
+        var pkmn = await _service.GetAsync(natDex);
+        
+        return Ok(pkmn);
+    }
+
+    [HttpGet]
+    [Tags("Pokemon Basic Infos")]
+    public async Task<OkObjectResult> GetPokemonPageAsync(int page)
+    {
+        var results = await _service.GetListByPagesAsync(page);
+        return Ok(results);
+    }
+
+    // GET: api/pkmn/{natDex}/favorite
+    [HttpGet("{natDex:int}/favorite")]
+    [Tags("Pokemon Favorite Bool")]
+    public async Task<ActionResult> GetFavorite(int natDex)
+    {
+        var pkmnMain = await _service.GetFavAsync(natDex);
+        return Ok(pkmnMain);
+    }
+
+    [HttpPut("{natDex:int}/update/favorite")]
+    [Tags("Pokemon Favorite Bool")]
+    public async Task<ActionResult> UpdateFavAsync(int natDex)
+    {
+        var updatedPkmn = await _service.UpdateFavAsync(natDex);
+        return Ok(updatedPkmn);
+    }
+
+
+    //GET: api/pkmn/{eggGroupId}
+    [HttpGet("/eggGroup/{id:int}")]
+    [Tags("Pokemon Egg Group Data")]
+    public async Task<ActionResult> GetEggGroupById(int id)
+    {
+        var pkmnEggGroup = await _service.GetEggGroupName(id);
+        return Ok(pkmnEggGroup);
+    }
+
+    [HttpGet("/eggGroup/listByID/{id:int?}")]
+    [Tags("Pokemon Egg Group Data")]
+    public async Task<ActionResult> GetEggGroupPokemonsByID(int id)
+    {
+        List<PkmnByGroup> pkmn;
+        if (id > 0)
         {
-            return NotFound();
+            pkmn = await _service.GetPokemonListEggByGroupId(id);
+        }
+        else
+        {
+            return BadRequest("Either id or name parameter must be provided.");
         }
 
         return Ok(pkmn);
     }
 
-    [HttpGet]
-    public async Task<OkObjectResult> GetPokemonPageAsync(int page)
+    [HttpGet("/eggGroup/listByName/{name}")]
+    [Tags("Pokemon Egg Group Data")]
+    public async Task<ActionResult> GetEggGroupPokemonsByName(string name)
     {
-        var results = await _mainService.GetListByPagesAsync(page);
-        return Ok(results);
-    }
-    // [HttpPost]
-    // public async Task<ActionResult> Post(PokemonBasics newPkmn)
-    // {
-    //     await _mainService.CreateAsync(newPkmn);
-    //     return CreatedAtAction(nameof(Get), new { natDex = newPkmn.NatDex }, newPkmn);
-    // }
+        List<PkmnByGroup>? pkmn;
+        if (!string.IsNullOrEmpty(name))
+        {
+            pkmn = await _service.GetPokemonListEggByGroupName(name);
+            if (pkmn == null)
+            {
+                return NotFound();
+            }
+        }
+        else
+        {
+            return BadRequest("Either id or name parameter must be provided.");
+        }
 
-    [HttpPut("{natDex:int}/update/favorite")]
-    public async Task<ActionResult> UpdateFavAsync(int natDex)
-    {
-        var updatedPkmn = await _mainService.UpdateFavAsync(natDex);
-        return Ok(updatedPkmn);
-    }
-
-    // GET: api/pkmn/{natDex}/favorite
-    [HttpGet("{natDex:int}/favorite")]
-    public async Task<ActionResult> GetFavorite(int natDex)
-    {
-        var pkmnMain = await _mainService.GetFavAsync(natDex);
-        return Ok(pkmnMain);
-    }
-    //GET: api/pkmn/{eggGroupId}
-    [HttpGet("/eggGroup/{id:int}")]
-    public async Task<ActionResult> GetEggGroupById(int id)
-    {
-        var pkmnEggGroup = await _mainService.GetEggGroupName(id);
-        return Ok(pkmnEggGroup);
+        return Ok(pkmn);
     }
 }
