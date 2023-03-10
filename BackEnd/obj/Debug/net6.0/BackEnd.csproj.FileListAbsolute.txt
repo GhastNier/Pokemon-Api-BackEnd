@@ -49,7 +49,6 @@ C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Ductus.FluentDocke
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Newtonsoft.Json.dll
-C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\dump\admin\system.version.metadata.json
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\michs\RiderProjects\Pokemon\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll

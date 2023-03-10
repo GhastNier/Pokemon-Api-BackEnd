@@ -1,3 +1,4 @@
+using BackEnd.Models;
 using BackEnd.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -96,4 +97,17 @@ public class PkmnController : ControllerBase
 
         return Ok(pkmn);
     }
+
+    [HttpGet("/pokemon/types/{typeId:int}")]
+    [Tags("Typing")]
+    public async Task<ActionResult> GetPokemonsByType(int typeId)
+    {
+        var pkmnTypeList = await _service.GetPkmnTypeList(typeId);
+        if (pkmnTypeList == null)
+        {
+            return NotFound();
+        }
+        return Ok(pkmnTypeList);
+    }
+    
 }

@@ -4,9 +4,9 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace BackEnd.Config;
 
-public abstract class OperationFilter
+public class OperationFilter
 {
-    public abstract class OperationNameFilter : IOperationFilter
+    public class OperationNameFilter : IOperationFilter
     {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {

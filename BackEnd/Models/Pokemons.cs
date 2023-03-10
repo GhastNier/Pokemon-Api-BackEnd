@@ -65,6 +65,11 @@ public  class Pokemons
         [BsonElement("natDex")] public int[] NatDex { get; set; } = null!;
     }
 }
+public class PkmnTypeList
+{
+    [BsonElement("_Id")] public int Id { get; set; }
+    [BsonElement("natDex")] public int[] NatDex { get; set; } = null!;
+}
 // public class Pokemons
 // {
 //     [BsonId] [BsonElement("_id")] public ObjectId Id { get; set; }

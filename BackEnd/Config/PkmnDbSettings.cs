@@ -26,6 +26,7 @@ public class PkmnDbSettings
             pkmnSettings.EggGroup = config["EGG_GROUP"]!;
             pkmnSettings.Stat = config["STAT"]!;
             pkmnSettings.Type = config["TYPE"]!;
+            pkmnSettings.TypeList = config["TYPE_LIST"];
             pkmnSettings.EggGroupView = config["EGGGROUP"];
         });
     }

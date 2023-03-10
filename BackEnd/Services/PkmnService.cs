@@ -12,6 +12,7 @@ public class PkmnService
     private readonly IMongoCollection<PokemonBasics> _basicCollection;
     private readonly IMongoCollection<EggGroup> _eggGroup;
     private readonly IMongoCollection<PkmnByEggGroupView> _byEggGroup;
+    private readonly IMongoCollection<PkmnTypeList> _byTypeList;
 
     public PkmnService(IOptions<PkmnDb> options)
     {
@@ -22,6 +23,7 @@ public class PkmnService
         _basicCollection = mongoDatabase.GetCollection<PokemonBasics>(options.Value.PkmnBasics);
         _eggGroup = mongoDatabase.GetCollection<EggGroup>(options.Value.EggGroup);
         _byEggGroup = mongoDatabase.GetCollection<PkmnByEggGroupView>(options.Value.EggGroupView);
+        _byTypeList = mongoDatabase.GetCollection<PkmnTypeList>(options.Value.TypeList);
     }
 
 
@@ -126,6 +128,12 @@ public class PkmnService
 
     }
 
+    public async Task<PkmnTypeList> GetPkmnTypeList(int typeId)
+    {
+        var pkmnTypeList = _byTypeList.AsQueryable();
+        var results = pkmnTypeList.Where(list => list.Id.Equals(typeId)).FirstOrDefaultAsync();
+        return await results;
+    }
     private async Task<int> GetTotalPages()
     {
         var pkmn = _basicCollection.AsQueryable().CountAsync();
@@ -136,3 +144,4 @@ public class PkmnService
         return await Task.FromResult(totalPages);
     }
 }
+
