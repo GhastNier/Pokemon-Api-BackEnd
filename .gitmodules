@@ -1,0 +1,4 @@
+[submodule "FrontEnd/ClientApp/src/assets/"]
+	path = FrontEnd/ClientApp/src/assets/
+	url = https://github.com/GhastNier/sprites.git
+	branch = testVersion
