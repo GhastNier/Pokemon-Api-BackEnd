@@ -3,7 +3,7 @@
 public class PkmnDb
 {
     public string ConnectionString { get; set; } = null!;
-    public string EggGroupView { get; set; } = null!;
+    public string? EggGroupView { get; set; } = null!;
     public string? DatabaseName { get; set; } = null!;
     public string PkmnFull { get; set; } = null!;
     public string EggGroup { get; set; } = null!;
@@ -21,5 +21,5 @@ public class PkmnDb
     public string Nature { get; set; } = null!;
     public string Stat { get; set; } = null!;
     public string Type { get; set; } = null!;
-    public string TypeList { get; set; } = null!;
+    public string? TypeList { get; set; } = null!;
 }

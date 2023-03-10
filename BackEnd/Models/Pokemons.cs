@@ -22,22 +22,9 @@ public  class Pokemons
         [BsonElement("sprite")] public string? Sprite { get; set; }
 
         [BsonElement("favorite")] public bool Favorite { get; set; }
+        [BsonElement("type1")] public int Type1 { get; set; }
+        [BsonElement("type2")] public int Type2 { get; set; }
     }
-
-    public  class PkmnByEggGroupView
-    {
-        [BsonElement("eggGroupID")] public int EggGroupId { get; set; }
-        [BsonElement("eggGroupName")] public string? EggGroupName { get; set; }
-        [BsonElement("pokemons")] public List<PkmnByGroup>? PkmnList { get; set; }
-    }
-
-    public class PkmnByGroup
-    {
-        [BsonElement("natDex")] public int NatDex { get; set; }
-        [BsonElement("name")] public string PkmnName { get; init; } = null!;
-        [BsonElement("sprite")] public string PkmnSprite { get; init; } = null!;
-    }
-
     public  class EggGroup
     {
         [BsonId]
@@ -65,11 +52,7 @@ public  class Pokemons
         [BsonElement("natDex")] public int[] NatDex { get; set; } = null!;
     }
 }
-public class PkmnTypeList
-{
-    [BsonElement("_Id")] public int Id { get; set; }
-    [BsonElement("natDex")] public int[] NatDex { get; set; } = null!;
-}
+
 // public class Pokemons
 // {
 //     [BsonId] [BsonElement("_id")] public ObjectId Id { get; set; }

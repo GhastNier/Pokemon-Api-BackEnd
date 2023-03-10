@@ -1,8 +1,8 @@
-using BackEnd.Models;
 using BackEnd.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using static BackEnd.Models.Pokemons;
+using static BackEnd.Models.PokemonViews;
 
 namespace BackEnd.Controllers;
 
@@ -64,7 +64,7 @@ public class PkmnController : ControllerBase
     [Tags("Pokemon Egg Group Data")]
     public async Task<ActionResult> GetEggGroupPokemonsByID(int id)
     {
-        List<PkmnByGroup> pkmn;
+        List<ListPkmn.ByGroup> pkmn;
         if (id > 0)
         {
             pkmn = await _service.GetPokemonListEggByGroupId(id);
@@ -81,7 +81,7 @@ public class PkmnController : ControllerBase
     [Tags("Pokemon Egg Group Data")]
     public async Task<ActionResult> GetEggGroupPokemonsByName(string name)
     {
-        List<PkmnByGroup>? pkmn;
+        List<ListPkmn.ByGroup>? pkmn;
         if (!string.IsNullOrEmpty(name))
         {
             pkmn = await _service.GetPokemonListEggByGroupName(name);

@@ -34,7 +34,7 @@ builder.Services.AddCors(options =>
 });
 
 var config = new ConfigurationBuilder().AddEnvironmentVariables().Build() ??
-             throw new ArgumentNullException("new ConfigurationBuilder().AddEnvironmentVariables().Build()");
+             throw new ArgumentNullException($"new ConfigurationBuilder().AddEnvironmentVariables().Build()");
 PkmnDbSettings.PkmnDbConfig(builder, config);
 
 

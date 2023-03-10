@@ -4,15 +4,16 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using static System.Console;
 using static BackEnd.Models.Pokemons;
+using static BackEnd.Models.PokemonViews;
 
 namespace BackEnd.Services;
 
 public class PkmnService
 {
     private readonly IMongoCollection<PokemonBasics> _basicCollection;
-    private readonly IMongoCollection<EggGroup> _eggGroup;
-    private readonly IMongoCollection<PkmnByEggGroupView> _byEggGroup;
-    private readonly IMongoCollection<PkmnTypeList> _byTypeList;
+    private readonly IMongoCollection<Pokemons.EggGroup> _eggGroup;
+    private readonly IMongoCollection<PokemonViews.EggGroup> _byEggGroup;
+    private readonly IMongoCollection<ListPkmn.ByType> _byTypeList;
 
     public PkmnService(IOptions<PkmnDb> options)
     {
@@ -21,9 +22,9 @@ public class PkmnService
         var mongoDatabase = mongoClient.GetDatabase(options.Value.DatabaseName) ??
                             throw new ArgumentNullException(nameof(options));
         _basicCollection = mongoDatabase.GetCollection<PokemonBasics>(options.Value.PkmnBasics);
-        _eggGroup = mongoDatabase.GetCollection<EggGroup>(options.Value.EggGroup);
-        _byEggGroup = mongoDatabase.GetCollection<PkmnByEggGroupView>(options.Value.EggGroupView);
-        _byTypeList = mongoDatabase.GetCollection<PkmnTypeList>(options.Value.TypeList);
+        _eggGroup = mongoDatabase.GetCollection<Pokemons.EggGroup>(options.Value.EggGroup);
+        _byEggGroup = mongoDatabase.GetCollection<PokemonViews.EggGroup>(options.Value.EggGroupView);
+        _byTypeList = mongoDatabase.GetCollection<ListPkmn.ByType>(options.Value.TypeList);
     }
 
 
@@ -84,14 +85,14 @@ public class PkmnService
         return (results);
     }
 
-    public async Task<EggGroup> GetEggGroupName(int id)
+    public async Task<Pokemons.EggGroup> GetEggGroupName(int id)
     {
         var pkmn = _eggGroup.AsQueryable();
         var results = await pkmn.Where(p => p.Id == id).FirstOrDefaultAsync();
         return (results);
     }
 
-    public async Task<List<PkmnByGroup>> GetPokemonListEggByGroupId(int id)
+    public async Task<List<ListPkmn.ByGroup>> GetPokemonListEggByGroupId(int id)
     {
         var pkmn = _byEggGroup.AsQueryable();
         var results = await pkmn.Where(g => g.EggGroupId == id).FirstOrDefaultAsync();
@@ -101,12 +102,12 @@ public class PkmnService
         }
 
         if (results.PkmnList == null) return null;
-        var pkmnList = results.PkmnList.Select(pokemon => new PkmnByGroup
+        var pkmnList = results.PkmnList.Select(pokemon => new ListPkmn.ByGroup
             { NatDex = pokemon.NatDex, PkmnName = pokemon.PkmnName, PkmnSprite = pokemon.PkmnSprite }).ToList();
         return pkmnList;
     }
     
-    public async Task<List<PkmnByGroup>?> GetPokemonListEggByGroupName(string name)
+    public async Task<List<ListPkmn.ByGroup>?> GetPokemonListEggByGroupName(string name)
     {
         if (string.IsNullOrEmpty(name))
         {
@@ -122,13 +123,13 @@ public class PkmnService
         }
 
         if (results.PkmnList == null) return null;
-        var pkmnList = results.PkmnList.Select(pokemon => new PkmnByGroup
+        var pkmnList = results.PkmnList.Select(pokemon => new ListPkmn.ByGroup
             { NatDex = pokemon.NatDex, PkmnName = pokemon.PkmnName, PkmnSprite = pokemon.PkmnSprite }).ToList();
         return pkmnList;
 
     }
 
-    public async Task<PkmnTypeList> GetPkmnTypeList(int typeId)
+    public async Task<ListPkmn.ByType> GetPkmnTypeList(int typeId)
     {
         var pkmnTypeList = _byTypeList.AsQueryable();
         var results = pkmnTypeList.Where(list => list.Id.Equals(typeId)).FirstOrDefaultAsync();
