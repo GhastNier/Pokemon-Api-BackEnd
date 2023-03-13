@@ -84,7 +84,7 @@ public class PkmnController : ControllerBase
         List<ListPkmn.ByGroup>? pkmn;
         if (!string.IsNullOrEmpty(name))
         {
-            pkmn = await _service.GetPokemonListEggByGroupName(name);
+            pkmn = await _service.GetPkmnListByEggGroupName(name);
             if (pkmn == null)
             {
                 return NotFound();

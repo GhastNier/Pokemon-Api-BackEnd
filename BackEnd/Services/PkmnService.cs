@@ -100,33 +100,30 @@ public class PkmnService
         {
             return null;
         }
-
-        if (results.PkmnList == null) return null;
-        var pkmnList = results.PkmnList.Select(pokemon => new ListPkmn.ByGroup
-            { NatDex = pokemon.NatDex, PkmnName = pokemon.PkmnName, PkmnSprite = pokemon.PkmnSprite }).ToList();
+        var pkmnList = results.Pkmn.Select(pokemon => new ListPkmn.ByGroup
+        { NatDex = pokemon.NatDex, PkmnName = pokemon.PkmnName }).ToList();
         return pkmnList;
     }
-    
-    public async Task<List<ListPkmn.ByGroup>?> GetPokemonListEggByGroupName(string name)
+
+    public async Task<List<ListPkmn.ByGroup>?> GetPkmnListByEggGroupName(string name)
     {
         if (string.IsNullOrEmpty(name))
         {
             throw new ArgumentException("The name parameter must not be null or empty.", nameof(name));
         }
-    
+
         var pkmn = _byEggGroup.AsQueryable();
         var results = await pkmn.Where(g => g.EggGroupName.Equals(name)).FirstOrDefaultAsync();
-    
+
         if (results == null)
         {
             return null;
         }
 
-        if (results.PkmnList == null) return null;
-        var pkmnList = results.PkmnList.Select(pokemon => new ListPkmn.ByGroup
-            { NatDex = pokemon.NatDex, PkmnName = pokemon.PkmnName, PkmnSprite = pokemon.PkmnSprite }).ToList();
+        if (results.Pkmn == null) return null;
+        var pkmnList = results.Pkmn.Select(pokemon => new ListPkmn.ByGroup
+            { NatDex = pokemon.NatDex, PkmnName = pokemon.PkmnName }).ToList();
         return pkmnList;
-
     }
 
     public async Task<ListPkmn.ByType> GetPkmnTypeList(int typeId)
@@ -135,6 +132,7 @@ public class PkmnService
         var results = pkmnTypeList.Where(list => list.Id.Equals(typeId)).FirstOrDefaultAsync();
         return await results;
     }
+
     private async Task<int> GetTotalPages()
     {
         var pkmn = _basicCollection.AsQueryable().CountAsync();
@@ -145,4 +143,3 @@ public class PkmnService
         return await Task.FromResult(totalPages);
     }
 }
-

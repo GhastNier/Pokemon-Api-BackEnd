@@ -18,7 +18,7 @@ public class PkmnDbSettings
             pkmnSettings.Habitat = config["HABITAT"]!;
             pkmnSettings.Shape = config["SHAPE"]!;
             pkmnSettings.Species = config["SPECIES"]!;
-            pkmnSettings.Pokedex = config["POKEDEX"]!;
+            pkmnSettings.Pokedexes = config["POKEDEXES"]!;
             pkmnSettings.Pokeatlhon = config["POKEATHLON"]!;
             pkmnSettings.Nature = config["NATURE"]!;
             pkmnSettings.EvoChain = config["CHAIN"]!;
@@ -28,6 +28,9 @@ public class PkmnDbSettings
             pkmnSettings.Type = config["TYPE"]!;
             pkmnSettings.TypeList = config["TYPE_LIST"];
             pkmnSettings.EggGroupView = config["EGGGROUP"];
+            pkmnSettings.DexByPkmn = config["POKEDEXPKMN"];
+            pkmnSettings.PkmnEvoForm = config["PKMNEVOFORM"];
+            pkmnSettings.DexEntries = config["DEXENT"];
         });
     }
 }

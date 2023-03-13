@@ -11,7 +11,7 @@
 //     public int Order { get; set; }
 //     public Generation? Generation { get; set; } 
 //     // [BsonElement("move_learn_methods")] public List<MoveLearnMtd>? MoveLearnMethods { get; set; }
-//     public List<Pokedex>? Pokedexes { get; set; }
+//     public List<PkmnPokedex>? PokedexModels { get; set; }
 //     public List<Region>? Regions { get; set; }
 //     public List<Version>? Versions { get; set; }
 // }
@@ -37,7 +37,7 @@
 //     [BsonElement("version_group")] public VersionGroup VersionGroup { get; set; }
 // }
 //
-// public class Pokedex
+// public class PkmnPokedex
 // {
 //     [BsonId] [BsonElement("_id")] public ObjectId Id { get; set; }
 //     public string? Name { get; set; }

@@ -13,6 +13,7 @@ DotEnv.Load();
 
 // Add services to the container.
 builder.Services.AddSingleton<PkmnService>();
+builder.Services.AddSingleton<PokedexService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

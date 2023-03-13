@@ -14,7 +14,7 @@ public class PkmnDb
     public string Habitat { get; set; } = null!;
     public string Shape { get; set; } = null!;
     public string Species { get; set; } = null!;
-    public string Pokedex { get; set; } = null!;
+    public string Pokedexes { get; set; } = null!;
     public string Pokeatlhon { get; set; } = null!;
     public string EvoTrigger { get; set; } = null!;
     public string EvoChain { get; set; } = null!;
@@ -22,4 +22,7 @@ public class PkmnDb
     public string Stat { get; set; } = null!;
     public string Type { get; set; } = null!;
     public string? TypeList { get; set; } = null!;
+    public string? DexEntries { get; set; } = null!;
+    public string? PkmnEvoForm { get; set; } = null!;
+    public string? DexByPkmn { get; set; } = null!;
 }

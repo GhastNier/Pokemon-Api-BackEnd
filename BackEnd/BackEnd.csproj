@@ -44,4 +44,7 @@
       <None Remove="dump\**" />
       <None Remove="data\**" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="backup" />
+    </ItemGroup>
 </Project>

@@ -1,13 +1,13 @@
 ﻿version: '3'
 services:
   bespokeapi:
-    image: songedaidai/bespokapi:1.0
+    image: mongo:6.0
     ports:
       - "27017:27017"
     environment:
       - MONGO_URI=mongodb://mongo:27017/bespokapi
     command: >
-      sh -c "mongorestore /backup --drop && npm start"
+      sh -c "mongorestore /backup && npm start"
     volumes:
       - ./data:/data/db
       - ./backup:/backup

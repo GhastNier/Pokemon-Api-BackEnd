@@ -74,7 +74,7 @@ public  class Pokemons
 //     public List<PkmnType>? Types { get; set; }
 //     public int Weight { get; set; }
 //     public bool Favorite { get; set; }
-//     public int NatDex { get; set; }
+//     public int DexByPkmn { get; set; }
 //
 //     public class PkmnStats
 //     {
