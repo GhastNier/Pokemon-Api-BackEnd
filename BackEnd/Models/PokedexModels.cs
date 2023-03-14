@@ -1,23 +1,32 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using static BackEnd.Models.PokedexDesc;
+using static BackEnd.Models.PokedexModels.Pokedexes;
 
 namespace BackEnd.Models;
 
 public class PokedexModels
 {
+    
+    public List<DexCription> DexCriptions { get; set; }
     public class Pokedexes
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string _Id { get; set; } = null!;
-
-        [BsonElement("id")] public int Id { get; set; }
         [BsonElement("name")] public string? DexName { get; set; }
-        [BsonElement("nameLocal")] public Localization? localize { get; set; }
-        [BsonElement("version")] public int? Version { get; set; }
-        [BsonElement("region")] public int? Region { get; set; }
+        [BsonElement("localization")] public List<DexCription> DexCriptions { get; set; }
+        [BsonElement("IDs")] public VersionIDs? IDs { get; set; }
+        public class DexCription
+        {
+    
+            [BsonElement("description")] public string? LocalDescription { get; set; }
+            [BsonElement("languageId")] public int? LanguageId { get; set; }
+        }
     }
 }
+
+
 
 public class ByPokemon
 {
@@ -71,12 +80,7 @@ public class PokedexDesc
         [BsonElement("langId")] public int? LangID { get; set; }
     }
 
-    public class VersionIDs
-    {
-        [BsonElement("dexId")] public int? DexId { get; set; }
-        [BsonElement("versId")] public int? VersionId { get; set; }
-        [BsonElement("regId")] public int? RegionId { get; set; }
-    }
+    
 }
 
 public class PkmnPokedex
@@ -102,8 +106,8 @@ public class PkmnPokedex
         [BsonElement("kalMounttDex")] public int? MountainKalos { get; set; }
         [BsonElement("kanDex")] public int? Kanto { get; set; }
         [BsonElement("letKanDex")] public int? LetsGoKanto { get; set; }
-        [BsonElement("oriAloAkaDex")] public int? oriAloAkaDex { get; set; }
-        [BsonElement("oriAloDex")] public int? oriAloDex { get; set; }
+        [BsonElement("oriAloAkaDex")] public int? OriAloAkaDex { get; set; }
+        [BsonElement("oriAloDex")] public int? OriAloDex { get; set; }
         [BsonElement("oriAloMelDex")] public int? oriAloMelDex { get; set; }
         [BsonElement("oriAloPoniDex")] public int? oriAloPoniDex { get; set; }
         [BsonElement("oriAloUlaDex")] public int? oriAloUlaDex { get; set; }
@@ -125,5 +129,11 @@ public class PkmnPokedex
 public class Localization
 {
     [BsonElement("languageId")] public int? LanguageId { get; set; }
-    [BsonElement("localDexName")] public string? LocalName { get; set; }
+    [BsonElement("localDexName")] public string? LocalizedName { get; set; }
+}
+public class VersionIDs
+{
+    [BsonElement("dexId")] public int? DexId { get; set; }
+    [BsonElement("versId")] public int? VersionId { get; set; }
+    [BsonElement("regId")] public int? RegionId { get; set; }
 }

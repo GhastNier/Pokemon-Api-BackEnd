@@ -22,8 +22,8 @@ public  class Pokemons
         [BsonElement("sprite")] public string? Sprite { get; set; }
 
         [BsonElement("favorite")] public bool Favorite { get; set; }
-        [BsonElement("type1")] public int Type1 { get; set; }
-        [BsonElement("type2")] public int Type2 { get; set; }
+        [BsonElement("type1")] public int? Type1 { get; set; }
+        [BsonElement("type2")] public int? Type2 { get; set; }
     }
     public  class EggGroup
     {

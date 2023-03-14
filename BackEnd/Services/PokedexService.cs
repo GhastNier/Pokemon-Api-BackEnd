@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using static BackEnd.Models.PokedexDesc;
 using static BackEnd.Models.PokedexModels;
+using static BackEnd.Models.PokedexModels.Pokedexes;
 using static BackEnd.Models.Pokemons;
 
 namespace BackEnd.Services;
@@ -26,10 +28,21 @@ public class PokedexService
     public async Task<IMongoQueryable<Pokedexes>> GetAsync()
     {
         IMongoQueryable<Pokedexes> pkmn = _pokedexes.AsQueryable()
-            .Where(p => p.Id == 1)
+            .Where(p => true)
             .Select(p => new Pokedexes {
                 _Id = p._Id,
-                DexName = p.DexName
+                DexName = p.DexName,
+                DexCriptions = p.DexCriptions.Select(d => new DexCription 
+                {
+                    LanguageId = d.LanguageId,
+                    LocalDescription = d.LocalDescription
+                }).ToList(),
+                IDs = new VersionIDs
+                {
+                    DexId = p.IDs.DexId,
+                    RegionId = p.IDs.RegionId,
+                    VersionId = p.IDs.VersionId
+                }
             });
         return pkmn;
     }

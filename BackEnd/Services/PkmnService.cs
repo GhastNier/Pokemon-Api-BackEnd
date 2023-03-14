@@ -32,7 +32,18 @@ public class PkmnService
     {
         var pkmn = _basicCollection.AsQueryable()
             .Where(p => p.NatDex == natDex)
-            .Select(p => p);
+            .Select(p => p => new PokemonBasics
+            {
+                Name = p.Name,
+                NatDex = p.NatDex,
+                Height = p.Height,
+                Weight = p.Weight,
+                Sprite = p.Sprite,
+                Favorite = p.Favorite,
+                Type1 = p.Type1,
+                Type2 = p.Type2
+                
+            });
         await Task.CompletedTask;
         return pkmn;
     }
